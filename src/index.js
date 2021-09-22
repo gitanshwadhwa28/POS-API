@@ -2,12 +2,12 @@ const express = require('express')
 
 const dotenv = require('dotenv');
 const instance = require('../ethereum/factory')
-const mongoose = require('mongoose');
+const mongoose = require('./db/mongoose')
+const userRoute = require('./routes/users')
 
 const app = express()
-
-
 app.use(express.json())
+app.use(userRoute)
 
 dotenv.config();
 
@@ -28,22 +28,6 @@ app.get('/accounts', async (req, res) => {
         res.status(400).send(e)
     }
 })
-
-app.use("/", require("./routes"));
-
-/* mongoose.connect(
-    process.env.DB_CONNECT,
-    { useNewUrlParser: true, useUnifiedTopology: true },
-    (client, err) =>{
-        try{
-
-            console.log("Connected to db")
-        }catch(err){
-            console.log(err);
-        }
-
-    }
-); */
 
 app.listen(process.env.PORT, function () {
     console.log("This server port is 3000!! ");
