@@ -1,16 +1,11 @@
 const express = require('express')
-<<<<<<< HEAD
+
 const dotenv = require('dotenv');
 const { instance } = require('../ethereum/factory')
 const mongoose = require('mongoose');
 
 const app = express()
-=======
-const instance = require('../ethereum/factory')
 
-const app = express()
-const port = process.env.PORT || 3005
->>>>>>> 60e3db2525358dafdaebba405f7e0eee68a6f070
 
 app.use(express.json())
 
