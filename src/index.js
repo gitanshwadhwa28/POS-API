@@ -1,7 +1,7 @@
 const express = require('express')
 
 const dotenv = require('dotenv');
-const { instance } = require('../ethereum/factory')
+const instance = require('../ethereum/factory')
 const mongoose = require('mongoose');
 
 const app = express()
@@ -45,6 +45,6 @@ app.use("/", require("./routes"));
     }
 ); */
 
-app.listen(process.env.PORT, function(){
+app.listen(process.env.PORT, function () {
     console.log("This server port is 3000!! ");
 })
