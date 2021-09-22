@@ -1,8 +1,8 @@
 const express = require('express')
-const { instance } = require('../ethereum/factory')
+const instance = require('../ethereum/factory')
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3005
 
 app.use(express.json())
 
@@ -14,9 +14,9 @@ app.get('/accounts', async (req, res) => {
     try {
         const accounts = await instance.methods.getDeployedAccounts().call()
 
-        // if (accounts.length == 0) {
-        //     res.status(404).send({ error: 'empty array' })
-        // }
+        if (accounts.length == 0) {
+            res.status(404).send({ error: 'empty array' })
+        }
         res.status(202).send(accounts)
 
     } catch (e) {
