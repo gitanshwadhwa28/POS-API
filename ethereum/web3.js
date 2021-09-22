@@ -7,7 +7,7 @@ if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
     web3 = new Web3(window.ethereum);
 } else {
     const provider = new Web3.providers.HttpProvider(
-        "infura api"
+        "https://rinkeby.infura.io/v3/33a046f29f2d4dbf966f5e2a548e576c"
     );
     web3 = new Web3(provider);
 }
