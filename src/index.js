@@ -5,8 +5,8 @@ const instance = require('../ethereum/factory')
 const accountInstance = require('../ethereum/account')
 // const mongoose = require('./db/mongoose')
 const userRoute = require('./routes/users')
-const web3 = require('../ethereum/web3')
-// const Web3 = require('web3')
+// const web3 = require('../ethereum/web3')
+const Web3 = require('web3')
 
 
 const app = express()
@@ -35,7 +35,22 @@ app.get('/accounts', async (req, res) => {
 
 app.get('/create', async (req, res) => {
     try {
-        const accounts = await web3.eth.requestAccounts()
+
+        let web3;
+
+        if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
+            window.ethereum.request({ method: "eth_requestAccounts" });
+            web3 = new Web3(window.ethereum);
+            console.log("metamask connect")
+        } else {
+            const provider = new Web3.providers.HttpProvider(
+                "https://rinkeby.infura.io/v3/33a046f29f2d4dbf966f5e2a548e576c"
+            );
+            web3 = new Web3(provider);
+            console.log("metamask not connected")
+        }
+
+        const accounts = await web3.eth.getAccounts()
         res.status(202).send(accounts)
         // await instance.methods.createAccount().send({ from: accounts[0] })
         // res.send('Contract deployed')
