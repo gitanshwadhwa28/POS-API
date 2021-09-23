@@ -5,18 +5,25 @@ const instance = require('../ethereum/factory')
 const accountInstance = require('../ethereum/account')
 // const mongoose = require('./db/mongoose')
 const userRoute = require('./routes/users')
-// const web3 = require('../ethereum/web3')
-const Web3 = require('web3')
+const web3 = require('../ethereum/web3')
+// const Web3 = require('web3')
 
+const { join } = require('path')
 
 const app = express()
+
+app.set("view engine", "ejs");
+app.set("views", __dirname + "/views");
+
+app.use(express.static(join(__dirname, "./public")));
+
 app.use(express.json())
 app.use(userRoute)
 
 dotenv.config();
 
 app.get('/', (req, res) => {
-    res.send('POS API')
+    res.render("index.ejs");
 })
 
 app.get('/accounts', async (req, res) => {
@@ -35,8 +42,7 @@ app.get('/accounts', async (req, res) => {
 
 app.get('/create', async (req, res) => {
     try {
-
-        const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+        const accounts = await web3.eth.requestAccounts()
         res.status(202).send(accounts)
         // await instance.methods.createAccount().send({ from: accounts[0] })
         // res.send('Contract deployed')
