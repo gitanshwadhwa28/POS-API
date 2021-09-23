@@ -1,6 +1,6 @@
-import web3 from './web3'
-const abi = require('./build/account.json');
+const web3 = require('./web3')
+const account = require('./build/account.json');
 
-const Account = (address) => { return new web3.eth.Contract(abi, address) }
+const Account = (address) => { return new web3.eth.Contract(account.abi, address) }
 
-export default Account;
+module.exports = Account
