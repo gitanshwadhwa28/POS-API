@@ -17,7 +17,7 @@ const { join } = require('path')
 const app = express();
 dotenv.config();
 
-app.use(express.json({limit: '20mb'}))
+app.use(express.json({ limit: '20mb' }))
 app.use(express.urlencoded({ extended: false, limit: '20mb' }))
 
 app.set("views", path.join(__dirname, "views"));

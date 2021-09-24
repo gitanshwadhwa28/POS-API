@@ -36,7 +36,9 @@ exports.signup = async (req, res) => {
     })
 
     try {
+        console.log("hah")
         const savedUser = await user.save();
+        console.log(savedUser)
         res.redirect("signin");
     } catch (err) {
         res.status(400).send(err);
@@ -44,11 +46,11 @@ exports.signup = async (req, res) => {
 }
 
 exports.signin = (req, res, next) => {
-  
+
     passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/signin'
-      })(req, res, next);
+    })(req, res, next);
 
 };
 
