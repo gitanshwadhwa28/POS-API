@@ -6,21 +6,25 @@ const accountInstance = require('../ethereum/account')
 const mongoose = require('mongoose')
 const userRoute = require('./routes/users')
 const web3 = require('../ethereum/web3')
+var path = require("path");
 const { forwardAuthenticated, ensureAuthenticated } = require('./config/auth');
 
 const { join } = require('path')
 
-const app = express()
+const app = express();
+dotenv.config();
 
+app.use(express.json({limit: '20mb'}))
+app.use(express.urlencoded({ extended: false, limit: '20mb' }))
+
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-app.set("views", __dirname + "/views");
 
 app.use("/public", express.static(__dirname + '/public'));
 
-app.use(express.json())
 app.use(userRoute)
 
-dotenv.config();
+
 
 
 mongoose.connect(
