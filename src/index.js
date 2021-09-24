@@ -10,6 +10,8 @@ const web3 = require('../ethereum/web3')
 var path = require("path");
 const { forwardAuthenticated, ensureAuthenticated } = require('./config/auth');
 
+require('./config/passport')(passport);
+
 const { join } = require('path')
 
 const app = express();
