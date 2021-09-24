@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const instance = require('../ethereum/factory')
 const accountInstance = require('../ethereum/account')
 const mongoose = require('mongoose')
+const passport = require('passport');
 const userRoute = require('./routes/users')
 const web3 = require('../ethereum/web3')
 var path = require("path");
@@ -19,6 +20,9 @@ app.use(express.urlencoded({ extended: false, limit: '20mb' }))
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/public", express.static(__dirname + '/public'));
 

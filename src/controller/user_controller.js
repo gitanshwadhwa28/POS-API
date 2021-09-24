@@ -44,10 +44,12 @@ exports.signup = async (req, res) => {
 }
 
 exports.signin = (req, res, next) => {
+  
     passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/signin'
-    })(req, res, next);
+      })(req, res, next);
+
 };
 
 exports.forgetPassword = async (req, res) => {
