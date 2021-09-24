@@ -19,4 +19,8 @@ router.post("/forgetPassword", userController.forgetPassword);
 
 router.get("/logout", userController.logout)
 
+router.get('/homepage', function(req, res){
+    res.render("homepage");
+})
+
 module.exports = router;
