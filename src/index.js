@@ -6,6 +6,8 @@ const accountInstance = require('../ethereum/account')
 // const mongoose = require('./db/mongoose')
 const userRoute = require('./routes/users')
 const web3 = require('../ethereum/web3')
+const { forwardAuthenticated, ensureAuthenticated } = require('./config/auth');
+
 
 const { join } = require('path')
 
@@ -21,7 +23,7 @@ app.use(userRoute)
 
 dotenv.config();
 
-app.get('/', (req, res) => {
+app.get('/', ensureAuthenticated, (req, res) => {
     res.render("index.ejs");
 })
 
