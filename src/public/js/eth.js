@@ -27,6 +27,6 @@ async function myFunction() {
         const res = await contract.methods.createAccount().send({ from: accounts[0] })
         result.innerHTML = "Contract Deployed Successfully!"
     } catch (e) {
-        result.innerHTML = "There was an error! Make sure you have metamask installed"
+        result.innerHTML = e.message
     }
 }
