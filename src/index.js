@@ -3,11 +3,10 @@ const express = require('express')
 const dotenv = require('dotenv');
 const instance = require('../ethereum/factory')
 const accountInstance = require('../ethereum/account')
-// const mongoose = require('./db/mongoose')
+const mongoose = require('mongoose')
 const userRoute = require('./routes/users')
 const web3 = require('../ethereum/web3')
 const { forwardAuthenticated, ensureAuthenticated } = require('./config/auth');
-
 
 const { join } = require('path')
 
@@ -23,20 +22,20 @@ app.use(userRoute)
 
 dotenv.config();
 
-/*
+
 mongoose.connect(
     process.env.DB_CONNECT,
     { useNewUrlParser: true, useUnifiedTopology: true },
-    (client, err) =>{
-        try{
+    (client, err) => {
+        try {
 
             console.log("Connected to db: ")
-        }catch(err){
+        } catch (err) {
             console.log(err);
         }
 
     }
-); */
+);
 
 app.get('/', ensureAuthenticated, (req, res) => {
     res.render("index.ejs");
