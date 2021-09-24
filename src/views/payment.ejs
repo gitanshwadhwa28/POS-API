@@ -16,12 +16,12 @@
 
 <body>
 
-    <button onclick="makeAccount()">Create</button>
+    <p>Contract: <%=id%></p>
+    <p>Amount: <%=amount%> Ether</p>
+    <button onclick="makePayment()">Pay</button>
     <p id="result"></p>
-    <br>
-    <br>
-    <p>Payment test: <a href="/payment/0x349aD194CAeBF683E344285Ea9f64c21d3Aa3f5F/1">Pay</a></p>
-    <script src="./js/eth.js"></script>
+
+    <script src="../../js/pay.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
         integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
         crossorigin="anonymous"></script>
