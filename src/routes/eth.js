@@ -3,7 +3,7 @@ const router = express.Router();
 const auth = require('../middleware/auth')
 const instance = require('../../ethereum/factory')
 
-router.get('/accounts', async (req, res) => {
+router.get('/accounts', auth, async (req, res) => {
     try {
         const accounts = await instance.methods.getDeployedAccounts().call()
 
@@ -17,7 +17,7 @@ router.get('/accounts', async (req, res) => {
     }
 })
 
-router.get('/payment/:id/:amount', async (req, res) => {
+router.get('/payment/:id/:amount', auth, async (req, res) => {
     try {
         const id = req.params.id
         const amount = req.params.amount
