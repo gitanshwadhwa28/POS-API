@@ -1,36 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="./css/style.css" />
-    <title>POS API</title>
-    <!-- <script src="../../node_modules/web3/dist/web3.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.5.3/web3.min.js"
-        integrity="sha512-qlZUrJYABWPEqVZvpmE0zITE+dl+1+KW8AX6lyge4T6e1O52+bL/0J2awi2vJpWGvi70ZnVqjxw14kjILOPplw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <title>POS</title>
 </head>
 
 <body>
 
-    <button onclick="makeAccount()">Create</button>
-    <p id="result"></p>
-    <br>
-    <br>
-    <p>Payment test: <a href="/payment/0x349aD194CAeBF683E344285Ea9f64c21d3Aa3f5F/1">Pay</a></p>
-    <script src="./js/eth.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+
+    <section class="entry pdgb50">
+        <div class="container">
+            <div class="row pdg50">
+                <div class="d-flex align-items-center justify-content-between">
+                    <img src="" width="250px">
+                    <a href="/signin"><button class="entry-button">Sign in</button></a>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-sm-6 pdg100">
+                    <h1><span class="g-c">POS</span> API for<br> E-commerce Applications</h1>
+                    <h6 class="mrg25">Lorem ipsum dolor sit amet <span class="g-c">lorem ipsum</span> Lorem ipsum dolor
+                        sit amet Lorem ipsum dolor sit amet</h6>
+                    <div class="d-flex mrg25 align-itmes-center">
+                        <a href="/signup"><button class="join-btn ">Join Now</button></a>
+                        <img src="img/eye.svg" width="50px" style="margin-left: 15px;">
+                    </div>
+                </div>
+                <div class="col-sm-6 text-center">
+                    <img src="img/man.svg" width="70%">
+                </div>
+            </div>
+
+            <div class="card pdg25 pdgb25">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3 text-center">
+                            <img src="img/1.svg" width="50px">
+                            <h5 class="mrg25">Lorem Ipsum Dorot</h5>
+                            <p>22 offers from 4% per month</p>
+                        </div>
+                        <div class="col-sm-3 text-center">
+                            <img src="img/2.svg" width="50px">
+                            <h5 class="mrg25">Lorem Ipsum Dorot</h5>
+                            <p>22 offers from 4% per month</p>
+                        </div>
+                        <div class="col-sm-3 text-center">
+                            <img src="img/3.svg" width="50px">
+                            <h5 class="mrg25">Lorem Ipsum Dorot</h5>
+                            <p>22 offers from 4% per month</p>
+                        </div>
+                        <div class="col-sm-3 text-center">
+                            <img src="img/4.svg" width="50px">
+                            <h5 class="mrg25">Lorem Ipsum Dorot</h5>
+                            <p>22 offers from 4% per month</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
-        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
-        crossorigin="anonymous"></script>
+
 
 </body>
 

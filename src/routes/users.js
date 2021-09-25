@@ -1,26 +1,88 @@
 const express = require('express');
 const router = express.Router();
-const userController = require("../controller/user_controller")
-const { forwardAuthenticated, ensureAuthenticated } = require('../config/auth');
+const bcrypt = require('bcrypt')
+const auth = require('../middleware/auth')
 
 const User = require('../models/user');
+let err;
 
-router.get('/signup', forwardAuthenticated, function (req, res) {
-    res.render("register");
+router.get('/signup', function (req, res) {
+    err = "";
+    res.render("register", { err });
 });
-router.post('/signup', forwardAuthenticated, userController.signup);
 
-router.get('/signin', forwardAuthenticated, function (req, res) {
-    res.render("login");
+router.post('/signup', async (req, res) => {
+    const { name, email, password, password2 } = req.body;
+
+    console.log(req.body.name)
+
+    if (!name || !email || !password || !password2) {
+        err = 'Please enter all fields'
+        return res.render("register", { err })
+    }
+
+    if (password != password2) {
+        err = 'Passwords do not match'
+        return res.render("register", { err })
+    }
+
+    if (password.length < 3) {
+        err = 'Password must be at least 3 characters'
+        return res.render("register", { err })
+    }
+
+
+    const userExists = await User.findOne({ email: req.body.email });
+    if (userExists) {
+        err = 'Email already exists'
+        return res.render("register", { err })
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const hashPassword = await bcrypt.hash(req.body.password, salt);
+
+    const user = new User({
+        name: req.body.name,
+        email: req.body.email,
+        password: hashPassword
+    })
+
+    try {
+        const savedUser = await user.save();
+        const token = await user.generateAuthToken()
+        req.session.token = token;
+        res.redirect("/admin");
+    } catch (err) {
+        res.render("register", { err })
+    }
 });
-router.post('/signin', forwardAuthenticated, userController.signin);
 
-router.post("/forgetPassword", userController.forgetPassword);
+let e;
 
-router.get("/logout", userController.logout)
+router.get('/signin', function (req, res) {
+    e = ""
+    res.render("login", { e });
+});
 
-router.get('/homepage', function (req, res) {
-    res.render("homepage");
+router.post('/signin', async (req, res) => {
+    try {
+        const user = await User.findByCredentials(req.body.email, req.body.password)
+        const token = await user.generateAuthToken()
+        req.session.token = token;
+        res.redirect("/admin")
+    } catch (e) {
+        res.render("login", { e })
+    }
 })
+
+router.get('/admin', auth, function (req, res) {
+    res.render("admin/index.ejs", { user: req.user });
+});
+
+router.get("/logout", auth, async (req, res) => {
+    delete req.session.token;
+    res.redirect("/signin")
+})
+
 
 module.exports = router;
