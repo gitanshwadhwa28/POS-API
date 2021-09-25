@@ -24,7 +24,7 @@
             for(i=0; i<contracts.length; i++)
             {                                        
         %>
-        <p><%=contracts[i].address%></p>
+        <p><%=contracts[i].address%> <a href="/details/<%=contracts[i].address%>">Details</a></p>
         <%}}else{%>
         <p>No deployed contracts</p>
         <%}%>

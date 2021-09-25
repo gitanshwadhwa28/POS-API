@@ -48,6 +48,10 @@ router.get('/contracts', auth, async (req, res) => {
     }
 })
 
+router.get('/details/:address', auth, async (req, res) => {
+    res.render("admin/contractDetails.ejs", { address: req.params.address, user: req.user })
+})
+
 // router.get('/payment/:id/:amount', auth, async (req, res) => {
 //     try {
 //         const id = req.params.id
