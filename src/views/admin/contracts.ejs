@@ -18,14 +18,17 @@
 <body>
 
     <div style="padding: 30px;">
-        <div>
-            <p><%=user.email%></p>
-            <a href="/contracts">Contracts</a>
-            <a style="margin-left: 20px;" href="/logout">Logout</a>
-        </div>
-        <br>
-        <button onclick="makeAccount()">Create</button>
-        <p id="result"></p>
+
+        <p><%=user.email%></p>
+        <%if(contracts[0]){
+            for(i=0; i<contracts.length; i++)
+            {                                        
+        %>
+        <p><%=contracts[i].address%></p>
+        <%}}else{%>
+        <p>No deployed contracts</p>
+        <%}%>
+
     </div>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -36,7 +39,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
         </script>
-    <script src="./js/eth.js"></script>
 
 </body>
 

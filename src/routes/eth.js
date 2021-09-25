@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth')
 const instance = require('../../ethereum/factory')
+const User = require('../models/user');
 
 router.get('/accounts', auth, async (req, res) => {
     try {
@@ -13,7 +14,7 @@ router.get('/accounts', auth, async (req, res) => {
         res.status(202).send(accounts)
 
     } catch (e) {
-        res.status(400).send(e)
+        res.redirect("/admin");
     }
 })
 
@@ -26,5 +27,35 @@ router.get('/payment/:id/:amount', auth, async (req, res) => {
         res.send(e)
     }
 })
+
+router.post('/addContract', auth, async (req, res) => {
+    try {
+        const address = await req.user.addAddress(req.body.address)
+        res.status(200).send(address)
+    } catch (e) {
+        res.redirect("/admin");
+    }
+})
+
+router.get('/contracts', auth, async (req, res) => {
+    try {
+        const userContracts = await User.findById(req.user._id)
+        const contracts = userContracts.contracts
+        console.log(contracts)
+        res.render("admin/contracts.ejs", { contracts, user: req.user })
+    } catch (e) {
+        res.redirect("/admin");
+    }
+})
+
+// router.get('/payment/:id/:amount', auth, async (req, res) => {
+//     try {
+//         const id = req.params.id
+//         const amount = req.params.amount
+//         res.render("payment.ejs", { id, amount })
+//     } catch (e) {
+//         res.send(e)
+//     }
+// })
 
 module.exports = router;

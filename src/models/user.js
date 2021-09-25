@@ -24,6 +24,11 @@ const UserSchema = new mongoose.Schema({
       type: String,
       required: true
     }
+  }],
+  contracts: [{
+    address: {
+      type: String,
+    }
   }]
 });
 
@@ -38,6 +43,14 @@ UserSchema.methods.generateAuthToken = async function () {
   user.tokens = user.tokens.concat({ token })
   user.save()
   return token
+}
+
+UserSchema.methods.addAddress = async function (address) {
+  const user = this
+  console.log(address)
+  user.contracts = user.contracts.concat({ address })
+  user.save()
+  return address
 }
 
 UserSchema.statics.findByCredentials = async (email, password) => {
