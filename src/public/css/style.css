@@ -44,7 +44,7 @@
     border-radius: 5px;
     border: none;
 }
-.entry .card{
+.entry .card{ 
     background: linear-gradient(94.46deg, rgba(113, 113, 113, 0.29) 0%, rgba(204, 204, 205, 0.29) 29.69%, rgba(91, 91, 93, 0.42) 100%);
 
 }

@@ -58,4 +58,9 @@ router.get('/contracts', auth, async (req, res) => {
 //     }
 // })
 
+
+router.get("/fiat", auth, async (req, res) => {
+    res.render("fiat");
+})
+
 module.exports = router;
