@@ -18,10 +18,13 @@ const contract = new web3.eth.Contract(
     '0xC7Cd8F16D7ff47586045187Eb02038F14d3853cD'
 )
 
+const result = document.getElementById("result")
+result.hidden = true;
 
 async function makeAccount() {
-    const result = document.getElementById("result")
+
     try {
+        result.hidden = false;
         result.innerHTML = "Processing Request..."
         const accounts = await web3.eth.requestAccounts()
         const res = await contract.methods.createAccount().send({ from: accounts[0] })
