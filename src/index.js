@@ -18,7 +18,7 @@ dotenv.config();
 const mongoose = require('./database/mongoose')
 
 app.use(express.json())
-app.use(cors({ origin: 'http://payment-test0.herokuapp.com', credentials: true }));
+app.use(cors());
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 
