@@ -8,6 +8,8 @@ const userRoute = require('./routes/users')
 const ethRoute = require('./routes/eth')
 const web3 = require('../ethereum/web3')
 var path = require("path");
+const cors = require('cors')
+
 
 
 const app = express();
@@ -16,13 +18,14 @@ dotenv.config();
 const mongoose = require('./database/mongoose')
 
 app.use(express.json())
-
+app.use(cors({ origin: 'http://payment-test0.herokuapp.com', credentials: true }));
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 
 app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true }))
 app.use(express.static(path.join(__dirname, "./public")));
 app.use(express.urlencoded({ extended: false, limit: '20mb' }))
+
 
 
 app.use(userRoute)
