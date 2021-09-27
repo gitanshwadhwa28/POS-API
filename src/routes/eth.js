@@ -52,15 +52,16 @@ router.get('/details/:address', auth, async (req, res) => {
     res.render("admin/contractDetails.ejs", { address: req.params.address, user: req.user })
 })
 
-// router.get('/payment/:id/:amount', auth, async (req, res) => {
-//     try {
-//         const id = req.params.id
-//         const amount = req.params.amount
-//         res.render("payment.ejs", { id, amount })
-//     } catch (e) {
-//         res.send(e)
-//     }
-// })
+router.get('/pay', async (req, res) => {
+    try {
+        const address = req.body.address
+        const amount = req.body.amount
+        console.log(address, amount)
+        res.render("payment.ejs", { address, amount })
+    } catch (e) {
+        res.send(e)
+    }
+})
 
 
 router.get("/fiat", auth, async (req, res) => {
