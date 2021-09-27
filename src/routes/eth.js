@@ -52,10 +52,10 @@ router.get('/details/:address', auth, async (req, res) => {
     res.render("admin/contractDetails.ejs", { address: req.params.address, user: req.user })
 })
 
-router.get('/pay', async (req, res) => {
+router.get('/pay/:address/:amount', async (req, res) => {
     try {
-        const address = req.body.address
-        const amount = req.body.amount
+        const address = req.params.address
+        const amount = req.params.amount
         console.log(address, amount)
         res.render("payment.ejs", { address, amount })
     } catch (e) {
