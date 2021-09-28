@@ -4,6 +4,7 @@ const auth = require('../middleware/auth')
 const instance = require('../../ethereum/factory')
 const User = require('../models/user');
 const proxy = require('express-http-proxy');
+const proxyMiddleware = require('http-proxy-middleware')
 
 router.get('/accounts', auth, async (req, res) => {
     try {
@@ -53,7 +54,7 @@ router.get('/details/:address', auth, async (req, res) => {
     res.render("admin/contractDetails.ejs", { address: req.params.address, user: req.user })
 })
 
-router.post('/pay', (req, res) => {
+/* router.post('/pay', (req, res) => {
     try {
         req.session.address = req.body.address
         req.session.amount = req.body.amount
@@ -64,8 +65,11 @@ router.post('/pay', (req, res) => {
     } catch (e) {
         res.send(e)
     }
-})
+}) */
 
+var apiProxy = proxyMiddleware('/pay', {target: 'https://pos-api-dh.herokuapp.com/payment'});
+
+router.use(apiProxy)
 
 /* router.use('/pay', proxy('https://pos-api-dh.herokuapp.com/payment', {
     //The proxyRqDecorator allows us to change a few things including the request type.
