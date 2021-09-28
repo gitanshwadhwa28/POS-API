@@ -83,7 +83,7 @@ proxyReqPathResolver: function (req) {
             req.session.amount = req.body.amount
             var value = req.body.key;
             
-            var resolvedPathValue = 'https://pos-api-dh.herokuapp.com/payment?' + value;
+            var resolvedPathValue = 'https://pos-api-dh.herokuapp.com/payment';
             console.log(`Inside forward path. The resolved path is ${resolvedPathValue}`);
             resolve(resolvedPathValue);
         }, 200);
@@ -92,9 +92,9 @@ proxyReqPathResolver: function (req) {
 }));
 
 router.get('/payment', (req, res) => {
-    if (!req.session.address || !req.session.amount) {
+    /* if (!req.session.address || !req.session.amount) {
         return res.status(400).send()
-    }
+    } */
     res.render("payment.ejs", { address: req.session.address, amount: req.session.amount })
 })
 
