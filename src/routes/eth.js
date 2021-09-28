@@ -58,7 +58,7 @@ router.post('/pay', (req, res) => {
         req.session.address = req.body.address
         req.session.amount = req.body.amount
         // console.log(address, amount)
-        res.redirect(307,'/payment');
+        res.render('/payment');
         // res.status(202).send({ address, amount })
         // res.render("payment.ejs", { address, amount })
     } catch (e) {
@@ -92,8 +92,8 @@ proxyReqPathResolver: function (req) {
 })); */
 
 router.get('/payment', (req, res) => {
-    req.session.address = 'add'
-    req.session.amount = 503
+/*     req.session.address = req.body.address
+    req.session.amount = req.body.amount */
     if (!req.session.address || !req.session.amount) {
         return res.status(400).send()
     }
