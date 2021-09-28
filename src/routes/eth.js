@@ -92,8 +92,8 @@ proxyReqPathResolver: function (req) {
 })); */
 
 router.get('/payment', (req, res) => {
-/*     req.session.address = req.body.address
-    req.session.amount = req.body.amount */
+    req.session.address = 'add'
+    req.session.amount = 503
     if (!req.session.address || !req.session.amount) {
         return res.status(400).send()
     }
