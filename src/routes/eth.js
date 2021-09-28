@@ -52,7 +52,7 @@ router.get('/details/:address', auth, async (req, res) => {
     res.render("admin/contractDetails.ejs", { address: req.params.address, user: req.user })
 })
 
-router.post('/pay', (req, res) => {
+router.get('/pay', (req, res) => {
     try {
         req.session.address = req.body.address
         req.session.amount = req.body.amount
