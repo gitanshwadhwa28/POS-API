@@ -57,7 +57,7 @@ router.post('/pay', (req, res) => {
         req.session.address = req.body.address
         req.session.amount = req.body.amount
         // console.log(address, amount)
-        res.redirect('/payment');
+        res.redirect(307,'/payment');
         // res.status(202).send({ address, amount })
         // res.render("payment.ejs", { address, amount })
     } catch (e) {
