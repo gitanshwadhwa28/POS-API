@@ -99,9 +99,9 @@ proxyReqPathResolver: function (req) {
 router.get('/payment', (req, res) => {
 /*     req.session.address = req.body.address
     req.session.amount = req.body.amount */
-    if (!req.session.address || !req.session.amount) {
+    /* if (!req.session.address || !req.session.amount) {
         return res.status(400).send()
-    }
+    } */
     res.render("payment.ejs", { address: req.session.address, amount: req.session.amount })
 })
 
