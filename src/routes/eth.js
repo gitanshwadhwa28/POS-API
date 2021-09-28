@@ -52,16 +52,21 @@ router.get('/details/:address', auth, async (req, res) => {
     res.render("admin/contractDetails.ejs", { address: req.params.address, user: req.user })
 })
 
-router.post('/pay', async (req, res) => {
+router.post('/pay', (req, res) => {
     try {
-        const address = req.body.address
-        const amount = req.body.amount
+        req.session.address = req.body.address
+        req.session.amount = req.body.amount
         console.log(address, amount)
-        res.status(202).send({ address, amount })
+        res.redirect(307, '/payment');
+        // res.status(202).send({ address, amount })
         // res.render("payment.ejs", { address, amount })
     } catch (e) {
         res.send(e)
     }
+})
+
+router.get('/payment', (req, res) => {
+    res.render("payment.ejs", { address: req.session.address, amount: req.session.amount })
 })
 
 
