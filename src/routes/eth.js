@@ -52,12 +52,13 @@ router.get('/details/:address', auth, async (req, res) => {
     res.render("admin/contractDetails.ejs", { address: req.params.address, user: req.user })
 })
 
-router.get('/pay/:address/:amount', async (req, res) => {
+router.post('/pay', async (req, res) => {
     try {
-        const address = req.params.address
-        const amount = req.params.amount
+        const address = req.body.address
+        const amount = req.body.amount
         console.log(address, amount)
-        res.render("payment.ejs", { address, amount })
+        res.status(202).send({ address, amount })
+        // res.render("payment.ejs", { address, amount })
     } catch (e) {
         res.send(e)
     }
