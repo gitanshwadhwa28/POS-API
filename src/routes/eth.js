@@ -83,7 +83,7 @@ proxyReqPathResolver: function (req) {
             req.session.amount = req.body.amount
             var value = req.body.key;
             
-            var resolvedPathValue = 'https://pos-api-dh.herokuapp.com/payment' + value;
+            var resolvedPathValue = 'https://pos-api-dh.herokuapp.com/payment?address = ' + req.session.address + 'amount = ' + req.session.amount;
             console.log(`Inside forward path. The resolved path is ${resolvedPathValue}`);
             resolve(resolvedPathValue);
         }, 200);
