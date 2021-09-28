@@ -54,7 +54,7 @@ router.get('/details/:address', auth, async (req, res) => {
     res.render("admin/contractDetails.ejs", { address: req.params.address, user: req.user })
 })
 
-/* router.post('/pay', (req, res) => {
+router.post('/pay', (req, res) => {
     try {
         req.session.address = req.body.address
         req.session.amount = req.body.amount
@@ -65,13 +65,13 @@ router.get('/details/:address', auth, async (req, res) => {
     } catch (e) {
         res.send(e)
     }
-}) */
+})
 
-var apiProxy = proxyMiddleware('/pay', {target: 'https://pos-api-dh.herokuapp.com/payment'});
+/* var apiProxy = proxyMiddleware('/pay', {target: 'https://pos-api-dh.herokuapp.com/payment'});
 
-router.use(apiProxy)
+router.use(apiProxy) */
 
-/* router.use('/pay', proxy('https://pos-api-dh.herokuapp.com/payment', {
+router.post('/pay', proxy('https://pos-api-dh.herokuapp.com', {
     //The proxyRqDecorator allows us to change a few things including the request type.
 
 proxyReqOptDecorator: (proxyReqOpts, srcReq) => {
@@ -87,13 +87,14 @@ proxyReqPathResolver: function (req) {
             req.session.amount = req.body.amount
             var value = req.body.key;
             
-            var resolvedPathValue = 'https://pos-api-dh.herokuapp.com/payment?address = ' + req.session.address + 'amount = ' + req.session.amount;
+            var resolvedPathValue = 'https://pos-api-dh.herokuapp.com/payment' + value;
             console.log(`Inside forward path. The resolved path is ${resolvedPathValue}`);
             resolve(resolvedPathValue);
+            //address = ' + req.session.address + 'amount = ' + req.session.amount
         }, 200);
     });
 }
-})); */
+}));
 
 router.get('/payment', (req, res) => {
 /*     req.session.address = req.body.address
