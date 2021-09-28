@@ -70,8 +70,8 @@ proxyReqOptDecorator: (proxyReqOpts, srcReq) => {
 proxyReqPathResolver: function (req) {
     return new Promise( (resolve, reject) => {
         setTimeout( () =>{
-           /*  req.session.address = req.body.address
-            req.session.amount = req.body.amount */
+            req.session.address = req.body.address
+            req.session.amount = req.body.amount
             var value = req.body.key;
             
             var resolvedPathValue = 'https://pos-api-dh.herokuapp.com/payment' + value;
