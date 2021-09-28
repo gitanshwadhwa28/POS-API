@@ -57,7 +57,7 @@ router.post('/pay', (req, res) => {
         req.session.address = req.body.address
         req.session.amount = req.body.amount
         // console.log(address, amount)
-        res.redirect(307, '/payment');
+        res.redirect('/payment');
         // res.status(202).send({ address, amount })
         // res.render("payment.ejs", { address, amount })
     } catch (e) {
@@ -66,7 +66,9 @@ router.post('/pay', (req, res) => {
 })
 
 router.get('/payment', (req, res) => {
-    console.log(req.session.address, req.session.amount)
+    if (!req.session.address || !req.session.amount) {
+        return res.status(400).send()
+    }
     res.render("payment.ejs", { address: req.session.address, amount: req.session.amount })
 })
 
