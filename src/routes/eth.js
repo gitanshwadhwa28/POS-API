@@ -3,6 +3,7 @@ const router = express.Router();
 const auth = require('../middleware/auth')
 const instance = require('../../ethereum/factory')
 const User = require('../models/user');
+const proxy = require('express-http-proxy');
 
 router.get('/accounts', auth, async (req, res) => {
     try {
@@ -52,7 +53,7 @@ router.get('/details/:address', auth, async (req, res) => {
     res.render("admin/contractDetails.ejs", { address: req.params.address, user: req.user })
 })
 
-router.post('/pay', (req, res) => {
+/* router.post('/pay', (req, res) => {
     try {
         req.session.address = req.body.address
         req.session.amount = req.body.amount
@@ -64,6 +65,31 @@ router.post('/pay', (req, res) => {
         res.send(e)
     }
 })
+ */
+
+router.use('/pay', proxy('https://pos-api-dh.herokuapp.com/payment', {
+    //The proxyRqDecorator allows us to change a few things including the request type.
+
+proxyReqOptDecorator: (proxyReqOpts, srcReq) => {
+    proxyReqOpts.method = 'GET';
+    return proxyReqOpts;
+},
+
+//The proxyReqPathResolver takes the Given URL and updates it to the forward path
+proxyReqPathResolver: function (req) {
+    return new Promise( (resolve, reject) => {
+        setTimeout( () =>{
+            req.session.address = req.body.address
+            req.session.amount = req.body.amount
+            var value = req.body.key;
+            
+            var resolvedPathValue = 'https://pos-api-dh.herokuapp.com/payment?' + value;
+            console.log(`Inside forward path. The resolved path is ${resolvedPathValue}`);
+            resolve(resolvedPathValue);
+        }, 200);
+    });
+}
+}));
 
 router.get('/payment', (req, res) => {
     if (!req.session.address || !req.session.amount) {
