@@ -54,12 +54,12 @@ router.get('/details/:address', auth, async (req, res) => {
     res.render("admin/contractDetails.ejs", { address: req.params.address, user: req.user })
 })
 
-router.post('/pay', (req, res) => {
+router.get('/pay', (req, res) => {
     try {
         req.session.address = req.body.address
         req.session.amount = req.body.amount
         // console.log(address, amount)
-        res.redirect(307,'/payment');
+        res.redirect(302,'/payment');
         // res.status(202).send({ address, amount })
         // res.render("payment.ejs", { address, amount })
     } catch (e) {
@@ -83,8 +83,8 @@ proxyReqOptDecorator: (proxyReqOpts, srcReq) => {
 proxyReqPathResolver: function (req) {
     return new Promise( (resolve, reject) => {
         setTimeout( () =>{
-            req.session.address = req.body.address
-            req.session.amount = req.body.amount
+           /*  req.session.address = req.body.address
+            req.session.amount = req.body.amount */
             var value = req.body.key;
             
             var resolvedPathValue = 'https://pos-api-dh.herokuapp.com/payment' + value;
