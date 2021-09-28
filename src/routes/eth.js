@@ -53,7 +53,7 @@ router.get('/details/:address', auth, async (req, res) => {
     res.render("admin/contractDetails.ejs", { address: req.params.address, user: req.user })
 })
 
-/* router.post('/pay', (req, res) => {
+router.post('/pay', (req, res) => {
     try {
         req.session.address = req.body.address
         req.session.amount = req.body.amount
@@ -65,9 +65,9 @@ router.get('/details/:address', auth, async (req, res) => {
         res.send(e)
     }
 })
- */
 
-router.use('/pay', proxy('https://pos-api-dh.herokuapp.com/payment', {
+
+/* router.use('/pay', proxy('https://pos-api-dh.herokuapp.com/payment', {
     //The proxyRqDecorator allows us to change a few things including the request type.
 
 proxyReqOptDecorator: (proxyReqOpts, srcReq) => {
@@ -89,11 +89,11 @@ proxyReqPathResolver: function (req) {
         }, 200);
     });
 }
-}));
+})); */
 
 router.get('/payment', (req, res) => {
-    req.session.address = req.body.address
-    req.session.amount = req.body.amount
+/*     req.session.address = req.body.address
+    req.session.amount = req.body.amount */
     if (!req.session.address || !req.session.amount) {
         return res.status(400).send()
     }
