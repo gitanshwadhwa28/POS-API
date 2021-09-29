@@ -101,7 +101,7 @@ router.use(apiProxy) */
 router.post('/pay', (req, res) => {
     req.session.address = req.body.address
     req.session.amount = req.body.amount
-    res.redirect('/payment');
+    res.redirect('/payment')
 })
 
 
@@ -112,7 +112,7 @@ router.use('/payment', (req, res) => {
     /* if (!req.session.address || !req.session.amount) {
         return res.status(400).send()
     } */
-    res.render("payment.ejs", { address: req.session.address, amount: req.session.amount })
+    res.render('payment.ejs', { address: req.session.address, amount: req.session.amount })
 })
 
 
