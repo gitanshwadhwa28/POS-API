@@ -55,42 +55,42 @@ router.get('/details/:address', auth, async (req, res) => {
 })
 
 
-router.use('/pay', (req, res) => {
-    proxy('https://pos-api-dh.herokuapp.com', {
-    //The proxyRqDecorator allows us to change a few things including the request type.
+// router.use('/pay', (req, res) => {
+//     proxy('https://pos-api-dh.herokuapp.com', {
+//     //The proxyRqDecorator allows us to change a few things including the request type.
 
-proxyReqOptDecorator: (proxyReqOpts, srcReq) => {
-    proxyReqOpts.method = 'GET';
-    return proxyReqOpts;
-},
+// proxyReqOptDecorator: (proxyReqOpts, srcReq) => {
+//     proxyReqOpts.method = 'GET';
+//     return proxyReqOpts;
+// },
 
-//The proxyReqPathResolver takes the Given URL and updates it to the forward path
-proxyReqPathResolver: function (req) {
-    return new Promise( (resolve, reject) => {
-        setTimeout( () =>{
-            req.session.address = req.body.address
-            req.session.amount = req.body.amount
-            var value = req.body.key;
-            
-            var resolvedPathValue = 'https://pos-api-dh.herokuapp.com/payment' + value;
-            console.log(`Inside forward path. The resolved path is ${resolvedPathValue}`);
-            resolve(resolvedPathValue);
-            //address = ' + req.session.address + 'amount = ' + req.session.amount
-        }, 200);
-    });
-}
-})
-    /* try {
-        req.session.address = req.body.address
-        req.session.amount = req.body.amount
-        // console.log(address, amount)
-        res.redirect(302,'/payment');
-        // res.status(202).send({ address, amount })
-        // res.render("payment.ejs", { address, amount })
-    } catch (e) {
-        res.send(e)
-    } */
-})
+// //The proxyReqPathResolver takes the Given URL and updates it to the forward path
+// proxyReqPathResolver: function (req) {
+//     return new Promise( (resolve, reject) => {
+//         setTimeout( () =>{
+//             req.session.address = req.body.address
+//             req.session.amount = req.body.amount
+//             var value = req.body.key;
+
+//             var resolvedPathValue = 'https://pos-api-dh.herokuapp.com/payment' + value;
+//             console.log(`Inside forward path. The resolved path is ${resolvedPathValue}`);
+//             resolve(resolvedPathValue);
+//             //address = ' + req.session.address + 'amount = ' + req.session.amount
+//         }, 200);
+//     });
+// }
+// })
+/* try {
+    req.session.address = req.body.address
+    req.session.amount = req.body.amount
+    // console.log(address, amount)
+    res.redirect(302,'/payment');
+    // res.status(202).send({ address, amount })
+    // res.render("payment.ejs", { address, amount })
+} catch (e) {
+    res.send(e)
+} */
+// })
 
 /* var apiProxy = proxyMiddleware('/pay', {target: 'https://pos-api-dh.herokuapp.com/payment'});
 
@@ -98,11 +98,17 @@ router.use(apiProxy) */
 
 //router.post('/pay', );
 
+router.post('/pay', (req, res) => {
+    req.session.address = req.body.address
+    req.session.amount = req.body.amount
+    res.redirect('/payment');
+})
 
 
-router.get('/payment', (req, res) => {
-/*     req.session.address = req.body.address
-    req.session.amount = req.body.amount */
+
+router.use('/payment', (req, res) => {
+    /*     req.session.address = req.body.address
+        req.session.amount = req.body.amount */
     /* if (!req.session.address || !req.session.amount) {
         return res.status(400).send()
     } */
