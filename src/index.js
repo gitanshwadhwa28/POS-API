@@ -32,7 +32,7 @@ app.use(userRoute)
 app.use(ethRoute)
 
 
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
     res.render("index.ejs");
 })
 

@@ -55,12 +55,12 @@ router.get('/details/:address', auth, async (req, res) => {
 })
 
 
-router.get('/pay', (req, res) => {
+router.use('/pay', (req, res) => {
     proxy('https://pos-api-dh.herokuapp.com', {
     //The proxyRqDecorator allows us to change a few things including the request type.
 
 proxyReqOptDecorator: (proxyReqOpts, srcReq) => {
-    proxyReqOpts.method = 'POST';
+    proxyReqOpts.method = 'GET';
     return proxyReqOpts;
 },
 
