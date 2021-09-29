@@ -20,7 +20,7 @@ async function makePayment(address, amount) {
     try {
         result.hidden = false
         result.innerHTML = "Processing Request..."
-        const amount = amount + "000000000000000000";
+        amount = amount + "000000000000000000";
         console.log(amount)
         const accountContract = new web3.eth.Contract(
             account.abi,
