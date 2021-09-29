@@ -102,7 +102,6 @@ router.post('/pay', (req, res) => {
     res.send({
         html: `<!DOCTYPE html>
     <html lang="en">
-    
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -112,13 +111,11 @@ router.post('/pay', (req, res) => {
         <link rel="stylesheet" href="https://bootswatch.com/4/journal/bootstrap.min.css" />
         <title>Payment gateway</title>
     </head>
-    
     <body>
         <div class="container">
-            <p><%=address%></p>
-            <p><%=amount%></p>
+            <p>req.body.address</p>
+            <p>req.body.amount</p>
         </div>
-    
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
@@ -129,7 +126,6 @@ router.post('/pay', (req, res) => {
             integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
             crossorigin="anonymous"></script>
     </body>
-    
     </html>`})
 })
 
