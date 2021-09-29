@@ -56,27 +56,11 @@ router.get('/details/:address', auth, async (req, res) => {
 
 
 router.get('/pay', (req, res) => {
-    try {
-        req.session.address = req.body.address
-        req.session.amount = req.body.amount
-        // console.log(address, amount)
-        res.redirect(302,'/payment');
-        // res.status(202).send({ address, amount })
-        // res.render("payment.ejs", { address, amount })
-    } catch (e) {
-        res.send(e)
-    }
-})
-
-/* var apiProxy = proxyMiddleware('/pay', {target: 'https://pos-api-dh.herokuapp.com/payment'});
-
-router.use(apiProxy) */
-
-router.post('/pay', proxy('https://pos-api-dh.herokuapp.com', {
+    proxy('https://pos-api-dh.herokuapp.com', {
     //The proxyRqDecorator allows us to change a few things including the request type.
 
 proxyReqOptDecorator: (proxyReqOpts, srcReq) => {
-    proxyReqOpts.method = 'GET';
+    proxyReqOpts.method = 'POST';
     return proxyReqOpts;
 },
 
@@ -95,7 +79,24 @@ proxyReqPathResolver: function (req) {
         }, 200);
     });
 }
-}));
+})
+    /* try {
+        req.session.address = req.body.address
+        req.session.amount = req.body.amount
+        // console.log(address, amount)
+        res.redirect(302,'/payment');
+        // res.status(202).send({ address, amount })
+        // res.render("payment.ejs", { address, amount })
+    } catch (e) {
+        res.send(e)
+    } */
+})
+
+/* var apiProxy = proxyMiddleware('/pay', {target: 'https://pos-api-dh.herokuapp.com/payment'});
+
+router.use(apiProxy) */
+
+//router.post('/pay', );
 
 
 
