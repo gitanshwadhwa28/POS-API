@@ -106,14 +106,14 @@ router.get('/pay/:address/:amount', (req, res) => {
 
 
 
-router.use('/payment', (req, res) => {
-    /*     req.session.address = req.body.address
-        req.session.amount = req.body.amount */
-    /* if (!req.session.address || !req.session.amount) {
-        return res.status(400).send()
-    } */
-    res.render('payment.ejs', { address: req.session.address, amount: req.session.amount })
-})
+// router.use('/payment', (req, res) => {
+//     /*     req.session.address = req.body.address
+//         req.session.amount = req.body.amount */
+//     /* if (!req.session.address || !req.session.amount) {
+//         return res.status(400).send()
+//     } */
+//     res.render('payment.ejs', { address: req.session.address, amount: req.session.amount })
+// })
 
 
 router.get("/fiat", auth, async (req, res) => {
