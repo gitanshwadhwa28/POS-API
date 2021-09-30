@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth')
 const instance = require('../../ethereum/factory')
+const Contract = require('../../ethereum/account')
 const User = require('../models/user');
 const proxy = require('express-http-proxy');
 const proxyMiddleware = require('http-proxy-middleware')
@@ -51,7 +52,10 @@ router.get('/contracts', auth, async (req, res) => {
 })
 
 router.get('/details/:address', auth, async (req, res) => {
-    res.render("admin/contractDetails.ejs", { address: req.params.address, user: req.user })
+    const address = req.params.address
+    // const userContract = Contract(address)
+    // const balance = userContract.methods.
+    res.render("admin/contractDetails.ejs", { address, user: req.user })
 })
 
 
