@@ -1,7 +1,7 @@
 # Decentralhacks 2021 :computer:
 
 <p align="center">
-  <h2 align="center">Team Pegasus</h3>
+  <h2 align="center">Team Pegasas</h3>
 </p>
 
 
