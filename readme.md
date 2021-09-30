@@ -1,11 +1,10 @@
-# Kaplas
+# Decentralized Hackathon :computer:
 
 <p align="center">
-  <h2 align="center">Kaplas Project</h3>
+  <h2 align="center">Team Pegasus</h3>
 </p>
 
 
-<!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
   <ol>
@@ -29,21 +28,15 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project is required to build in **`node js`** with **`mongodb`** as backend. It provides following capability through API interface: 
 
-1. CSV File Upload from Multipart Form
-2. Scan the uploaded CSv and push its content in MongoDB collection
-3. API to perform CRUD operations on above collection
-
-The above API are using passport package for basic authentication to manage access
 
 ### Framework Used
 
 Here are the major framwords which were used in the project
+* [Brownie](https://eth-brownie.readthedocs.io/en/stable/)
 * [Nodejs](https://nodejs.org/en/)
 * [NPM package Manager](https://www.npmjs.com/)
 * [Mongo DB](https://www.mongodb.com/)
-* [Postman](https://www.postman.com/)
 
 <!-- GETTING STARTED -->
 ## Getting Started
