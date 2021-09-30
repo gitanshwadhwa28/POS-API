@@ -75,8 +75,10 @@ router.post('/signin', async (req, res) => {
     }
 })
 
-router.get('/admin', auth, function (req, res) {
-    res.render("admin/index.ejs", { user: req.user });
+router.get('/admin', auth, async function (req, res) {
+    const userContracts = await User.findById(req.user._id)
+    const contracts = userContracts.contracts
+    res.render("admin/index.ejs", {contracts, user: req.user });
 });
 
 router.get("/logout", auth, async (req, res) => {

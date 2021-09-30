@@ -5,19 +5,36 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./css/style.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.5.3/web3.min.js"
         integrity="sha512-qlZUrJYABWPEqVZvpmE0zITE+dl+1+KW8AX6lyge4T6e1O52+bL/0J2awi2vJpWGvi70ZnVqjxw14kjILOPplw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css" />
     <title>POS</title>
 </head>
 
 <body>
     
-    <div style="padding: 30px;">
+    <section class="entry" style="padding-top: 50px;">
+        <div class="container">
+            <div class="row ">
+                <div class="d-flex align-items-center justify-content-center">
+                    <p><%=user.email%></p>
+                </div>
+            </div>
+            <div class="row pdg100">
+                <div class="d-flex align-items-center justify-content-center">
+                    <p><%=address%></p> <p style="padding-left: 50px;"><button onclick="contractWithdraw('<%=address%>')"
+                        style="border: none; color: red;">Withdraw</button></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- <div style="padding: 30px;">
         <div>
             <p><%=user.email%></p>
             <p><%=address%> <button onclick="contractWithdraw('<%=address%>')"
@@ -26,7 +43,7 @@
 
         <div style="margin-top: 25px;" class="alert alert-dark" id="result" role="alert"></div>
 
-    </div>
+    </div> -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
 

@@ -2,7 +2,7 @@
 
 .entry{
     min-height: 100vh;
-    background: url('/img/bg-2.png');
+    background: url('../img/bg-2.png');
     background-size: cover;
 }
 .entry-button{
@@ -66,4 +66,28 @@
 }
 .pdg100{
     padding-top: 100px;
+}
+
+.details:link{
+    text-decoration: none;
+    color: red;
+    font-weight: bold;
+}
+
+.details:visited{
+    text-decoration: none;
+    color: green;
+    font-weight: bold;
+}
+
+.details:hover{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.details:active{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
 }
