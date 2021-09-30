@@ -33,6 +33,9 @@ app.use(ethRoute)
 
 
 app.get('/', (req, res) => {
+    if (req.session.token) {
+        return res.redirect('/admin')
+    }
     res.render("index.ejs");
 })
 
