@@ -120,7 +120,7 @@ router.get('/pay/:address/:amount', (req, res) => {
 // })
 
 
-router.get("/fiat", auth, async (req, res) => {
+router.get("/fiat", async (req, res) => {
     res.render("fiat");
 })
 
