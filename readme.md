@@ -23,7 +23,7 @@
       </ul>
     </li>
     <li>
-      <a href="#payment-gateway">Payment Gateway integration in Node.js Application</a>
+      <a href="#payment-gateway">Payment Gateway</a>
     </li>
     <li>
       <a href="#application-screenshots">Application Screenshots</a>
@@ -82,14 +82,14 @@ Make sure you are using Chrome browser with **Metamask** installed.
        Secret session string `SESSION_SECRET = "-"`.
 
 <!-- PAYMENT GATEWAY -->
-## Payment Gateway integration in Node.js Application
+## Payment Gateway
 
 ```
 app.post("/pay", (req, res) => {
 
     const data = {
-        address: '0xd13fB0D9D7b18e90ca0bEE6E0f30CB0A002F644b',
-        amount: 1
+        address: 'SMART CONTRACT ADDRESS',
+        amount: AMOUNT
     };
     const url = "https://pos-api-dh.herokuapp.com/pay";
     request.post({
