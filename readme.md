@@ -6,7 +6,7 @@
  
 [Github Repo for Smart Contracts](https://github.com/visheshsinha/demoTest) :octocat:
 
-<details open="open">
+<details open="close">
   <summary>Table of Contents</summary>
   <ol>
     <li>
@@ -20,8 +20,13 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
-        <li><a href="#payment-gateway">Payment Gateway</a></li>
       </ul>
+    </li>
+    <li>
+      <a href="#payment-gateway">Payment Gateway</a>
+    </li>
+    <li>
+      <a href="#application-screenshots">Application Screenshots</a>
     </li>
   </ol>
 </details>
@@ -76,7 +81,8 @@ Make sure you are using Chrome browser with **Metamask** installed.
        Verification string for JSON web tokens `VERIFY_TOKEN = "-"`. </br>
        Secret session string `SESSION_SECRET = "-"`.
 
-### Payment Gateway integration in Node.js application
+<!-- PAYMENT GATEWAY -->
+## Payment Gateway integration in Node.js application
 
 ```
 app.post("/pay", (req, res) => {
@@ -112,7 +118,13 @@ app.post("/pay", (req, res) => {
     })
 })
 ```
-<!-- USAGE -->
-<!-- ## Usage -->
+
+## Application Screenshots
+
+![s1](https://github.com/gitanshwadhwa28/POS-API/blob/main/readme-screenshots/s1.png?raw=true)
+![s2](https://github.com/gitanshwadhwa28/POS-API/blob/main/readme-screenshots/s2.png?raw=true)
+![s3](https://github.com/gitanshwadhwa28/POS-API/blob/main/readme-screenshots/s3.png?raw=true)
+![s4](https://github.com/gitanshwadhwa28/POS-API/blob/main/readme-screenshots/s4.png?raw=true)
+![s5](https://github.com/gitanshwadhwa28/POS-API/blob/main/readme-screenshots/s5.png?raw=true)
 
 
