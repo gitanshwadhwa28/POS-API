@@ -23,7 +23,7 @@
       </ul>
     </li>
     <li>
-      <a href="#payment-gateway">Payment Gateway</a>
+      <a href="#payment-gateway">Payment Gateway integration in Node.js Application</a>
     </li>
     <li>
       <a href="#application-screenshots">Application Screenshots</a>
