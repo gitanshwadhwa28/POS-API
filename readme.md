@@ -27,7 +27,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+Nowadays many business small or big has started accepting UPI Payments , in future as crypto starts to be more accepted we might see businesses & e-commerce websites start accepting Crypto as a form of payment on any purchase.
 
+Created an application which is more accessible for a beginner to integrate Crypto payments with a few lines of code and grow their business. For any online marketplace like E-commerce websites can take different forms of payments to make it much more accessible to their customers. Even with zero knowledge of blockchain or cryptocurrency, one can start accepting payments simply by creating an account on Pegasas web application without any KYC. 
 
 
 ## Technologies Used
