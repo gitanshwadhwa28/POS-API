@@ -73,7 +73,43 @@ Make sure you are using Chrome browser with **Metamask** installed.
        Verification string for JSON web tokens `VERIFY_TOKEN = "-"`. </br>
        Secret session string `SESSION_SECRET = "-"`.
 
+### Payment Gateway
+
+```
+app.post("/pay", (req, res) => {
+
+    const data = {
+        address: '0xd13fB0D9D7b18e90ca0bEE6E0f30CB0A002F644b',
+        amount: 1
+    };
+    const url = "https://pos-api-dh.herokuapp.com/pay";
+    request.post({
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        uri: url,
+        form: data,
+    }, function (error, httpRes, body) {
+        if (error) {
+            console.log("Error", error);
+            res.status(400).json(
+                {
+                    status: false,
+                    message: error
+                }
+            );
+        }
+        if (httpRes.statusCode === 200) {
+            res.send(body);
+        } else if (httpRes.statusCode >= 300 && httpRes.statusCode <= 400) {
+            res.redirect(httpRes.headers.location.toString());
+            console.log("error 300 and 400");
+        }
+    })
+})
+```
 <!-- USAGE -->
-## Usage
+<!-- ## Usage -->
 
 
