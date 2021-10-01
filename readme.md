@@ -82,7 +82,7 @@ Make sure you are using Chrome browser with **Metamask** installed.
        Secret session string `SESSION_SECRET = "-"`.
 
 <!-- PAYMENT GATEWAY -->
-## Payment Gateway integration in Node.js application
+## Payment Gateway integration in Node.js Application
 
 ```
 app.post("/pay", (req, res) => {
