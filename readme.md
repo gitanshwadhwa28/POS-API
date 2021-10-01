@@ -22,7 +22,6 @@
         <li><a href="#payment-gateway">Payment Gateway</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
   </ol>
 </details>
 
