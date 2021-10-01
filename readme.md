@@ -3,7 +3,8 @@
 <p align="center">
   <h2 align="center">Team Pegasas</h3>
 </p>
-
+ 
+[Github Repo for Smart Contracts](https://github.com/visheshsinha/demoTest) :octocat:
 
 <details open="open">
   <summary>Table of Contents</summary>
@@ -34,7 +35,7 @@ Created an application which is more accessible for a beginner to integrate Cryp
 
 ## Technologies Used
 
-Here are the major framwords which were used in the project
+Here are the major framworks which were used in the project
 * [Brownie](https://eth-brownie.readthedocs.io/en/stable/)
 * [Onramper](https://onramper.com/)
 * [Nodejs](https://nodejs.org/en/)
@@ -44,7 +45,7 @@ Here are the major framwords which were used in the project
 <!-- GETTING STARTED -->
 ## Getting Started
 
-The following sections helps in installing the project and the prerequisties required for the same.
+The following section helps in installing the project to run the application locally and the prerequisties required for the same.
 The prerequisites and the installation guide are as follow:-
 
 ### Prerequisites
@@ -75,7 +76,7 @@ Make sure you are using Chrome browser with **Metamask** installed.
        Verification string for JSON web tokens `VERIFY_TOKEN = "-"`. </br>
        Secret session string `SESSION_SECRET = "-"`.
 
-### Payment Gateway
+### Payment Gateway integration in Node.js application
 
 ```
 app.post("/pay", (req, res) => {
