@@ -4,7 +4,7 @@
   <h2 align="center">Team Pegasas</h3>
 </p>
  
-[Github Repo for Smart Contracts](https://github.com/visheshsinha/demoTest) :octocat:
+[Github Repo for Smart Contracts](https://github.com/visheshsinha/pegasasPayment) :octocat:
 
 <details open="close">
   <summary>Table of Contents</summary>
